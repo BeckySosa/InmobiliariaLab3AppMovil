@@ -57,15 +57,20 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
             mUri.setValue(uri);///le indica donde esta la imagen
         }
    }
-   public void cargarInmueble(String direccion,String valor,String tipo,String uso,String ambientes,String superficie,boolean disponible){
+   public void cargarInmueble(String direccion,String valor,String tipo,String uso,String ambientes,String superficie,String latitud,String longitud,boolean disponible){
         int superf;
         int amb;
         double pre;
+        double lat;
+        double lon;
         try{
             superf=Integer.parseInt(superficie);
             amb=Integer.parseInt(ambientes);
             pre=Double.parseDouble(valor);
-            if(direccion.isBlank() || tipo.isBlank() || uso.isBlank() || ambientes.isBlank() || superficie.isBlank() || valor.isBlank()){
+            lat=Double.parseDouble(latitud);
+            lon=Double.parseDouble(longitud);
+
+            if(direccion.isBlank() || tipo.isBlank() || uso.isBlank() || ambientes.isBlank() || superficie.isBlank() || valor.isBlank() || latitud.isBlank() || longitud.isBlank()){
                 mMsj.setValue("Se requiere todos los campos, no deben estar vacios");
                 return;
             }
@@ -80,6 +85,8 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
             inmueble.setUso(uso);
             inmueble.setAmbientes(amb);
             inmueble.setSuperficie(superf);
+            inmueble.setLatitud(lat);
+            inmueble.setLongitud(lon);
             inmueble.setDisponible(disponible);
             byte[] imagen =transformarImagen();
             String inmuebleJson = new Gson().toJson(inmueble);

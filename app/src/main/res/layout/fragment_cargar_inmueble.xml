@@ -24,80 +24,79 @@
 
     <EditText
         android:id="@+id/etDireccion"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Direccion"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
         android:id="@+id/etPrecio"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
+        android:layout_width="200dp"
+        android:layout_height="41dp"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Precio"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDireccion" />
 
     <EditText
         android:id="@+id/etTipo"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Tipo"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintBottom_toTopOf="@+id/ckDisponible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUso" />
+        app:layout_constraintTop_toBottomOf="@+id/etUso"
+        app:layout_constraintVertical_bias="0.294" />
 
     <EditText
         android:id="@+id/etSuperficie"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Superficie"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTipo" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/etDireccion"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
         android:id="@+id/etAmbiente"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Ambientes"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etPrecio"
         app:layout_constraintTop_toBottomOf="@+id/etSuperficie" />
 
     <CheckBox
         android:id="@+id/ckDisponible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="104dp"
         android:text="Disponible"
         app:layout_constraintBottom_toTopOf="@+id/imgInmu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAmbiente"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintTop_toBottomOf="@+id/etLongitud"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnAgFoto"
@@ -134,14 +133,13 @@
 
     <EditText
         android:id="@+id/etUso"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Uso"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPrecio" />
 
@@ -152,5 +150,31 @@
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etLatitud"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="Latitud"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toEndOf="@+id/etUso"
+        app:layout_constraintTop_toBottomOf="@+id/etAmbiente" />
+
+    <EditText
+        android:id="@+id/etLongitud"
+        android:layout_width="174dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Longitud"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/etTipo"
+        app:layout_constraintTop_toBottomOf="@+id/etLatitud" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,6 +64,8 @@ public class CargarInmuebleFragment extends Fragment {
                         binding.etUso.getText().toString(),
                         binding.etAmbiente.getText().toString(),
                         binding.etSuperficie.getText().toString(),
+                        binding.etLatitud.getText().toString(),
+                        binding.etLongitud.getText().toString(),
                         binding.ckDisponible.isChecked()
 
                 );

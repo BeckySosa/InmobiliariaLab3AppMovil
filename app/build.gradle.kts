@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
@@ -8,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.inmobiliaria"
-        minSdk = 34
+        minSdk = 30
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -47,6 +48,9 @@ dependencies {
     implementation(libs.legacy.support.v4)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.play.services.maps)
+    implementation(libs.recyclerview)
+    implementation(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

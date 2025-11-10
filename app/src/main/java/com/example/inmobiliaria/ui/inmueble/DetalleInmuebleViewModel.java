@@ -20,19 +20,33 @@ import retrofit2.Response;
 
 public class DetalleInmuebleViewModel extends AndroidViewModel {
     private MutableLiveData<Inmueble> mInmueble= new MutableLiveData<>();
+    private MutableLiveData<Boolean> mNavegar= new MutableLiveData<>();
+    private MutableLiveData<Integer> idInmu= new MutableLiveData<>();
     public DetalleInmuebleViewModel(@NonNull Application application) {
         super(application);
     }
     LiveData<Inmueble> getMInmueble(){
         return mInmueble;
     }
+    LiveData<Boolean> getMNavegar(){
+        return mNavegar;
+    }
+    LiveData<Integer> getIdInmu(){
+
+        return idInmu;
+    }
 
     public void obtenerInmueble(Bundle inmuebleBundle){
         Inmueble inmu = (Inmueble) inmuebleBundle.getSerializable("inmueble");
         if(inmu != null){
+            if(inmu.isTieneContratoVigente()){
+                mNavegar.setValue(true);
+                idInmu.setValue(inmu.getIdInmueble());
+            }
             this.mInmueble.setValue(inmu);
         }
     }
+
     public void actualizarInmueble(Boolean disponible){
         Inmueble inmueble = new Inmueble();
         inmueble.setDisponible(disponible);

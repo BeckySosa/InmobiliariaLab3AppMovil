@@ -41,11 +41,15 @@ public class InmuebleFragment extends Fragment {
 
             }
         });
-        vm.leerInmuebles();
+        vm.leerInmuebles(false);
+        binding.ckbVerAlqui.setOnClickListener(view ->{
+            vm.leerInmuebles(binding.ckbVerAlqui.isChecked());
+        });
+
         binding.btnFAgregarIn.setOnClickListener(v -> {
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_nav_inmueble_to_cargarInmuebleFragment);
-                });
+            NavHostFragment.findNavController(this).navigate(R.id.action_nav_inmueble_to_cargarInmuebleFragment);
+        });
+
 
 
 

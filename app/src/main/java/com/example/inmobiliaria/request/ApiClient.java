@@ -3,8 +3,11 @@ package com.example.inmobiliaria.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.inmobiliaria.model.Contrato;
 import com.example.inmobiliaria.model.Inmueble;
+import com.example.inmobiliaria.model.Pago;
 import com.example.inmobiliaria.model.Propietario;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -24,6 +27,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public class ApiClient {
 
@@ -32,7 +36,8 @@ public class ApiClient {
     public static InmoService getApiInmobiliaria(){
         Gson gson = new GsonBuilder()
                 .setLenient()
-                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            ///    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .setDateFormat("yyyy-MM-dd")
                 .create();
 
 
@@ -85,6 +90,17 @@ public class ApiClient {
         Call<Inmueble> agregarInmueble(@Header("Authorization") String token,
                                        @Part MultipartBody.Part imagen,
                                        @Part("inmueble") RequestBody inmueble);
+
+        @GET("api/Inmuebles/GetContratoVigente")
+        Call<List<Inmueble>> getInmuebleContrato(@Header("Authorization") String token);
+
+        @GET("api/contratos/inmueble/{id}")
+        Call<Contrato> getContratoInquilino(@Header("Authorization") String token,
+                                           @Path("id") int id);
+
+        @GET("api/Pagos/contrato/{id}")
+        Call<List<Pago>> getPagos(@Header("Authorization") String token,
+                                    @Path("id") int id);
     }
 
 }

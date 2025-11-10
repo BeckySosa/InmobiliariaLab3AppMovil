@@ -57,6 +57,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
                     });
 
 
+
     }
 
     @Override
@@ -74,6 +75,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             imgInmueble = itemView.findViewById(R.id.imgInmueble);
             cardView = itemView.findViewById(R.id.idCard);
+
 
         }
     }

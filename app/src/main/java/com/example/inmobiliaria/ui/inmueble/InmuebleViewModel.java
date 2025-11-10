@@ -26,7 +26,7 @@ public class InmuebleViewModel extends AndroidViewModel {
     public InmuebleViewModel(@NonNull Application application) {
 
         super(application);
-        leerInmuebles();
+        leerInmuebles(false);
     }
     public LiveData<String> getMText(){
         return mText;
@@ -35,24 +35,47 @@ public class InmuebleViewModel extends AndroidViewModel {
     public LiveData<List<Inmueble>> getMInmueble(){
         return mInmueble;
     }
-    public void leerInmuebles(){
+    public void leerInmuebles(boolean checked){
         String token = ApiClient.leerToken(getApplication());
         ApiClient.InmoService api = ApiClient.getApiInmobiliaria();
-        Call<List<Inmueble>> llamada = api.obtenerInmuebles("Bearer "+ token);
-        llamada.enqueue(new Callback<List<Inmueble>>() {
-            @Override
-            public void onResponse(Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
-                if (response.isSuccessful()) {
-                    mInmueble.postValue(response.body());
-                } else {
-                    Toast.makeText(getApplication(), "No hay inmuebles disponibles"+ response.message(), Toast.LENGTH_SHORT).show();
+        if(!checked){
+            Call<List<Inmueble>> llamada = api.obtenerInmuebles("Bearer "+ token);
+            llamada.enqueue(new Callback<List<Inmueble>>() {
+                @Override
+                public void onResponse(Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
+                    if (response.isSuccessful()) {
+                        mInmueble.postValue(response.body());
+                    } else {
+                        Toast.makeText(getApplication(), "No hay inmuebles disponibles"+ response.message(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<Inmueble>> call, Throwable t) {
-                 Toast.makeText(getApplication(),"Error en servidor "+t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<List<Inmueble>> call, Throwable t) {
+                    Toast.makeText(getApplication(),"Error en servidor "+t.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            Call<List<Inmueble>> llamada = api.getInmuebleContrato("Bearer "+ token);
+            llamada.enqueue(new Callback<List<Inmueble>>() {
+                @Override
+                public void onResponse(Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
+                    if(response.isSuccessful()){
+                        mInmueble.postValue(response.body());
+
+                    }else{
+                        Toast.makeText(getApplication(), "No hay inmuebles con contratos vigentes", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<List<Inmueble>> call, Throwable t) {
+                    Toast.makeText(getApplication(),"Error en servidor "+t.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
         }
  }
